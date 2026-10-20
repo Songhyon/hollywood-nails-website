@@ -6,92 +6,70 @@
   <title>Hollywood Nails | Kynsistudio Sörnäinen, Helsinki</title>
   <meta name="description" content="Hollywood Nails – kynsi-, ripsi- ja kulmahoidot sekä sokerointi Hämeentie 17 A, Helsinki. Soita ja varaa aika: 040 411 2391.">
   <link rel="icon" href="img/logo-blush.png">
+  <link rel="preload" href="fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="site-header">
-  <div class="wrap header-row">
-    <a href="#top" class="brand"><span class="mono">HN</span><span class="brand-name">Hollywood Nails</span></a>
-    <nav class="nav">
-      <a href="#palvelut">Palvelut</a>
-      <a href="#tyot">Työt</a>
-      <a href="#hinnasto">Hinnasto</a>
-      <a href="#yhteystiedot">Yhteystiedot</a>
-    </nav>
-    <a class="btn btn-small" href="tel:+358404112391">Soita ja varaa</a>
-  </div>
+  <a href="#top" class="brand">Hollywood Nails <span>Sörnäinen</span></a>
+  <nav class="nav" aria-label="Sivun osiot">
+    <a href="#palvelut">Palvelut</a>
+    <a href="#tyot">Työt</a>
+    <a href="#hinnasto">Hinnasto</a>
+    <a href="#yhteystiedot">Yhteystiedot</a>
+  </nav>
+  <a class="call" href="tel:+358404112391">040 411 2391</a>
 </header>
 
 <main id="top">
 
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-text reveal">
-        <p class="eyebrow">Kynsistudio · Sörnäinen, Helsinki</p>
-        <h1>Kauniit kynnet,<br>huolella tehty.</h1>
-        <p class="lead">Kynsi-, jalka-, ripsi- ja kulmahoidot sekä sokerointi Hämeentiellä.</p>
-        <p class="lead-en">Nails, lashes, brows &amp; sugaring in Sörnäinen, Helsinki.</p>
-        <div class="hero-actions">
-          <a class="btn" href="tel:+358404112391">Soita ja varaa <span class="en">/ Call to book</span></a>
-        </div>
-        <a class="rating" href="tel:+358404112391">☎ 040 411 2391 · Ma–pe 10–18, La 10–14</a>
-      </div>
-      <figure class="hero-img reveal">
-        <img src="img/01-berry-ombre-cats-eye.jpg" alt="Marjanpunainen ombre-kynsilakkaus cat's eye -efektillä">
-      </figure>
-    </div>
-  </section>
-
-  <section id="palvelut" class="section">
-    <div class="wrap">
-      <h2 class="reveal">Palvelut</h2>
-      <p class="section-en reveal">Services</p>
-      <div class="cards">
-        <article class="card reveal">
-          <h3>Kynnet</h3>
-          <p>Manikyyri, geelilakkaus ja akryyliset rakennekynnet. Ranskalaiset, ombret, cat's eye ja kuviot.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Jalat</h3>
-          <p>Jalkahoito ja varpaiden geelilakkaus.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Ripset &amp; kulmat</h3>
-          <p>Ripsienpidennykset, kestotaivutus sekä ripsien ja kulmien kestovärjäys.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Sokerointi</h3>
-          <p>Hellävarainen karvanpoisto sokeritahnalla, ylähuulesta brasilialaiseen.</p>
-        </article>
+    <img class="hero-img" src="img/hero-placeholder.jpg" alt="Suklaanruskeat marmorikuvioidut mantelikynnet" fetchpriority="high">
+    <div class="hero-content">
+      <h1 class="wordmark">Hollywood<br>Nails</h1>
+      <div class="hero-row">
+        <p>Rakenne- ja geelikynnet, cat eye, nail art, jalkahoidot, ripset ja sokerointi Hämeentiellä. <span class="en">Nails, lashes, brows &amp; sugaring in Sörnäinen, Helsinki.</span></p>
+        <a class="btn btn-light" href="tel:+358404112391">Soita ja varaa <span class="en">/ Call to book</span></a>
       </div>
     </div>
   </section>
 
-  <section id="tyot" class="section section-soft">
+  <section id="palvelut" class="section services">
     <div class="wrap">
-      <h2 class="reveal">Töitämme</h2>
-      <p class="section-en reveal">Our work</p>
+      <h2>Palvelut</h2>
+      <ul class="service-list">
+        <li><h3>Kynnet</h3><p>Manikyyri, geelilakkaus ja akryyliset rakennekynnet. Ranskalaiset, ombret, cat eye ja kuviot.</p></li>
+        <li><h3>Jalat</h3><p>Jalkahoito ja varpaiden geelilakkaus.</p></li>
+        <li><h3>Ripset &amp; kulmat</h3><p>Ripsienpidennykset, kestotaivutus sekä ripsien ja kulmien kestovärjäys.</p></li>
+        <li><h3>Sokerointi</h3><p>Hellävarainen karvanpoisto sokeritahnalla, ylähuulesta brasilialaiseen.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="tyot" class="section work">
+    <div class="wrap">
+      <div class="work-head">
+        <h2>Töitämme</h2>
+        <a class="link" href="https://www.instagram.com/hollywoodnails.helsinki/" target="_blank" rel="noopener">Lisää töitä Instagramissa @hollywoodnails.helsinki</a>
+      </div>
       <div class="gallery">
-        <img class="reveal" src="img/02-lilac-cats-eye-white-lines.jpg" alt="Liila cat's eye -lakkaus valkoisilla viivoilla" loading="lazy">
-        <img class="reveal" src="img/05-chocolate-marble-almond.jpg" alt="Suklaanruskea marmorikuvio mantelikynsissä" loading="lazy">
-        <img class="reveal" src="img/07-classic-french.jpg" alt="Klassinen ranskalainen manikyyri" loading="lazy">
-        <img class="reveal" src="img/04-nude-almond-rhinestones.jpg" alt="Nude-mantelikynnet strasseilla" loading="lazy">
-        <img class="reveal" src="img/09-raspberry-red-round.jpg" alt="Vadelmanpunaiset pyöreät kynnet" loading="lazy">
-        <img class="reveal" src="img/10-grey-ombre-square-cuticle-oil.jpg" alt="Harmaa ombre neliökynsissä" loading="lazy">
-        <img class="reveal" src="img/03-classic-red.jpg" alt="Klassinen punainen lakkaus" loading="lazy">
-        <img class="reveal" src="img/06-studio-colour-charts.jpg" alt="Studion värikartat ja laaja värivalikoima" loading="lazy">
+        <figure class="g1"><img src="img/02-lilac-cats-eye-white-lines.jpg" alt="Liila cat's eye -lakkaus valkoisilla viivoilla" loading="lazy"></figure>
+        <figure class="g2"><img src="img/05-chocolate-marble-almond.jpg" alt="Suklaanruskea marmorikuvio mantelikynsissä" loading="lazy"></figure>
+        <figure class="g3"><img src="img/07-classic-french.jpg" alt="Klassinen ranskalainen manikyyri" loading="lazy"></figure>
+        <figure class="g4"><img src="img/04-nude-almond-rhinestones.jpg" alt="Nude-mantelikynnet strasseilla" loading="lazy"></figure>
+        <figure class="g5"><img src="img/09-raspberry-red-round.jpg" alt="Vadelmanpunaiset pyöreät kynnet" loading="lazy"></figure>
+        <figure class="g6"><img src="img/10-grey-ombre-square-cuticle-oil.jpg" alt="Harmaa ombre neliökynsissä" loading="lazy"></figure>
+        <figure class="g7"><img src="img/03-classic-red.jpg" alt="Klassinen punainen lakkaus" loading="lazy"></figure>
       </div>
-      <p class="center"><a class="link" href="https://www.instagram.com/hollywoodnails.helsinki/" target="_blank" rel="noopener">Lisää töitä Instagramissa @hollywoodnails.helsinki →</a></p>
     </div>
   </section>
 
-  <section id="hinnasto" class="section">
+  <section id="hinnasto" class="section prices-section">
     <div class="wrap">
-      <h2 class="reveal">Hinnasto</h2>
-      <p class="section-en reveal">Prices</p>
+      <h2>Hinnasto</h2>
       <div class="prices">
-        <div class="price-col reveal">
+        <div class="price-col">
           <h3>Rakennekynnet</h3>
           <ul>
             <li><span>Uudet akryylikynnet</span><span>70 €</span></li>
@@ -112,7 +90,7 @@
             <li class="sub"><span>Geelilakkauksen huolto</span><span>42 €</span></li>
           </ul>
         </div>
-        <div class="price-col reveal">
+        <div class="price-col">
           <h3>Jalkahoito</h3>
           <ul>
             <li><span>Jalkahoito (liuotus, kovettumat, kynsinauhat, hieronta)</span><span>45 €</span></li>
@@ -133,7 +111,7 @@
             <li><span>Sääret ja reidet</span><span>70 €</span></li>
           </ul>
         </div>
-        <div class="price-col reveal">
+        <div class="price-col">
           <h3>Ripsienpidennykset</h3>
           <ul>
             <li><span>Uudet klassiset</span><span>60 €</span></li>
@@ -151,16 +129,17 @@
           </ul>
         </div>
       </div>
-      <p class="note">Varaa aika soittamalla <a href="tel:+358404112391">040 411 2391</a>. <span class="en">Call to book.</span></p>
-      <p class="center"><a class="btn" href="tel:+358404112391">Soita ja varaa <span class="en">/ Call to book</span></a></p>
+      <div class="price-cta">
+        <p>Varaa aika soittamalla. <span class="en">Call to book.</span></p>
+        <a class="btn" href="tel:+358404112391">Soita 040 411 2391</a>
+      </div>
     </div>
   </section>
 
-  <section class="section section-soft">
-    <div class="wrap narrow center">
-      <h2 class="reveal">Asiakkaat kehuvat</h2>
-      <p class="section-en reveal">What clients say</p>
-      <ul class="praise reveal">
+  <section class="praise-section" aria-label="Asiakkaat kehuvat">
+    <div class="wrap">
+      <p class="praise-title">Asiakkaat kehuvat</p>
+      <ul class="praise">
         <li>Tarkka ja huolellinen työ</li>
         <li>Kynnet kestävät 4–5 viikkoa</li>
         <li>Laaja värivalikoima</li>
@@ -170,27 +149,23 @@
     </div>
   </section>
 
-  <section id="yhteystiedot" class="section">
+  <section id="yhteystiedot" class="section contact">
     <div class="wrap contact-grid">
-      <div class="reveal">
+      <div>
         <h2>Yhteystiedot</h2>
-        <p class="section-en">Contact</p>
         <dl class="info">
           <dt>Osoite</dt><dd>Hämeentie 17 A, Helsinki</dd>
           <dt>Puhelin</dt><dd><a href="tel:+358404112391">040 411 2391</a></dd>
-          <dt>Sähköposti</dt><dd><a href="mailto:hollywoodnails.helsinki@gmail.com">hollywoodnails.helsinki@gmail.com</a></dd>
+          <dt>Sähköposti</dt><dd><a href="mailto:hollywoodnails.helsinki@gmail.com">hollywoodnails.helsinki@<wbr>gmail.com</a></dd>
           <dt>Aukioloajat</dt><dd>Ma–pe 10–18<br>La 10–14<br>Su suljettu<br><span class="en">Mon–Fri 10–18, Sat 10–14, Sun closed</span></dd>
           <dt>Instagram</dt><dd><a href="https://www.instagram.com/hollywoodnails.helsinki/" target="_blank" rel="noopener">@hollywoodnails.helsinki</a></dd>
         </dl>
-        <a class="btn" href="tel:+358404112391">Soita ja varaa <span class="en">/ Call to book</span></a>
+        <a class="btn btn-light" href="tel:+358404112391">Soita ja varaa <span class="en">/ Call to book</span></a>
       </div>
-      <div class="map reveal">
-        <div class="map-card">
-          <p class="map-pin">📍</p>
-          <p class="map-addr">Hämeentie 17 A<br>00500 Helsinki</p>
-          <p class="map-sub">Sörnäinen · <span class="en">a short walk from Sörnäinen metro</span></p>
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Hollywood+Nails+H%C3%A4meentie+17+A+Helsinki" target="_blank" rel="noopener">Näytä kartalla <span class="en">/ Open map</span></a>
-        </div>
+      <div class="map-card">
+        <p class="map-addr">Hämeentie 17 A<br>00500 Helsinki</p>
+        <p class="map-sub">Sörnäinen, lyhyt kävely metroasemalta. <span class="en">Near Sörnäinen metro.</span></p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Hollywood+Nails+H%C3%A4meentie+17+A+Helsinki" target="_blank" rel="noopener">Näytä kartalla <span class="en">/ Open map</span></a>
       </div>
     </div>
   </section>
