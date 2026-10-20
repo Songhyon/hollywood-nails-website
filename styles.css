@@ -107,7 +107,7 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 .footer-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: .95rem; }
 .footer-brand img { border-radius: 50%; }
 .footer-info { opacity: .85; line-height: 1.6; }
-.footer .privacy { max-width: 1116px; margin: 12px auto 0; padding-top: 12px; border-top: 1px solid rgba(233,217,207,.18); opacity: .75; }
+.footer .privacy { max-width: 1116px; margin: 12px max(32px, calc((100% - 1116px) / 2)) 0; padding-top: 12px; border-top: 1px solid rgba(233,217,207,.18); opacity: .75; }
 .footer .privacy summary { cursor: pointer; list-style: none; }
 .footer .privacy summary::-webkit-details-marker { display: none; }
 .footer .privacy summary:hover { text-decoration: underline; }
