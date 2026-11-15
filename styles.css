@@ -119,9 +119,9 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 @media (max-width: 960px) {
   .nav { display: none; }
   .prices { grid-template-columns: 1fr 1fr; }
-  .gallery { grid-template-columns: repeat(3, 1fr); }
+  .gallery { grid-template-columns: repeat(3, 1fr); grid-auto-flow: dense; }
   .gallery .g1 { grid-column: span 3; }
-  .gallery .g6, .gallery .g7 { grid-column: span 1; }
+  .gallery .g6, .gallery .g7 { grid-column: span 2; }
 }
 /* phone */
 @media (max-width: 640px) {
@@ -158,7 +158,7 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 /* GSAP + Lenis animations (29.10): helpers used by scroll.js */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
-.line-mask { display: block; overflow: hidden; padding-bottom: .04em; }
+.line-mask { display: block; overflow: hidden; padding-bottom: .04em; padding-top: .16em; margin-top: -.16em; } /* room for Ä/Ö dots */
 .line-mask > span { display: inline-block; will-change: transform; }
 .gallery figure { will-change: clip-path; }
 .gallery img { will-change: transform; }
