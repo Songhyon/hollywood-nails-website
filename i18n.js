@@ -38,6 +38,12 @@
     "Varaa soittamalla": "Book by phone",
     "Kynnet, jalkahoidot ja ripset. Teresa palvelee englanniksi": "Nails, pedicures and lashes. Teresa speaks English",
     "Teresan hinnat ja vapaat ajat näet netissä, tai soita / WhatsApp": "See Teresa's prices and free times online, or call / WhatsApp",
+    "Vuodesta 2006": "Since 2006", "· Hämeentie 17": "· Hämeentie 17", "Meistä": "About us", "Vuodesta 2006.": "Since 2006.",
+    "Hollywood Nails on ollut Hämeentiellä Sörnäisissä jo vuodesta 2006, koko ajan samassa paikassa. Olemme ylpeitä siitä, että asiakkaat palaavat meille vuodesta toiseen.":
+      "Hollywood Nails has been on Hämeentie in Sörnäinen since 2006, always in the same place. We're proud that our customers keep coming back year after year.",
+    "Teemme rakenne- ja geelikynnet, jalkahoidot, ripset ja sokeroinnin huolellisesti. Palvelemme suomeksi, vietnamiksi ja englanniksi.":
+      "We do acrylic and gel nails, pedicures, lashes and sugaring with care. We serve you in Finnish, Vietnamese and English.",
+    "· yli 500 arvostelua Timmassa": "· 500+ reviews on Timma", "5,0 ★": "5.0 ★",
     "Varaa Teresalle": "Book with Teresa",
     "(English only)": "(no Finnish)",
     "· Sandy · puhelinvaraus": "· Sandy · phone booking",
