@@ -1,207 +1,435 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hollywood Nails | Kynsistudio Sörnäinen, Helsinki</title>
-  <meta name="description" content="Hollywood Nails – kynsi-, ripsi- ja kulmahoidot sekä sokerointi, Hämeentie 17 A, Helsinki. Soita ja varaa aika: 040 411 2391.">
-  <link rel="icon" href="img/favicon-a.png">
-  <link rel="canonical" href="https://hollywoodnails.fi/">
-  <meta property="og:title" content="Hollywood Nails | Kynsistudio Sörnäinen, Helsinki">
-  <meta property="og:url" content="https://hollywoodnails.fi/">
-  <meta property="og:image" content="https://hollywoodnails.fi/img/logo-a-round.png">
-  <link rel="preload" href="fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=6">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hollywood Nails · Kynsistudio Sörnäinen, Helsinki</title>
+<meta name="description" content="Rakenne- ja geelikynnet, cat eye, nail art, jalkahoidot, ripset ja sokerointi Hämeentiellä, Sörnäisissä. Varaa soittamalla 040 411 2391.">
+<link rel="icon" href="assets/favicon-a.png">
+<link rel="canonical" href="https://hollywoodnails.fi/">
+<meta property="og:title" content="Hollywood Nails · Kynsistudio Sörnäinen, Helsinki">
+<meta property="og:description" content="Rakenne- ja geelikynnet, jalkahoidot, ripset ja sokerointi Hämeentiellä, Sörnäisissä.">
+<meta property="og:url" content="https://hollywoodnails.fi/">
+<meta property="og:image" content="https://hollywoodnails.fi/img/hero-chocolate-marble.jpg">
+<meta property="og:locale" content="fi_FI">
+<link rel="stylesheet" href="scrollcraft.css?v=7">
+<style>
+  @font-face { font-family: "Anton"; src: url(fonts/anton-latin-400-normal.woff2) format("woff2"); font-display: swap; }
+  @font-face { font-family: "Manrope"; font-weight: 400; src: url(fonts/manrope-latin-400-normal.woff2) format("woff2"); font-display: swap; }
+  @font-face { font-family: "Manrope"; font-weight: 600; src: url(fonts/manrope-latin-600-normal.woff2) format("woff2"); font-display: swap; }
+  @font-face { font-family: "Manrope"; font-weight: 700; src: url(fonts/manrope-latin-700-normal.woff2) format("woff2"); font-display: swap; }
+
+  :root {
+    --sc-canvas:     #EFE9E2;
+    --sc-surface:    #D1C8BD;
+    --sc-ink:        #322E2B;
+    --sc-ink-soft:   #6A615B;
+    --sc-accent:     #72393E;
+    --sc-accent-ink: #FFFFFF;
+    --sc-font-display: "Anton", "Arial Narrow", Impact, sans-serif;
+    --sc-font-text:    "Manrope", system-ui, sans-serif;
+    --polish: #5a2a20;
+    --polish-name: "Suklaa";
+  }
+  html { background: var(--sc-canvas); color-scheme: light; }
+  body { color: var(--sc-ink); font-family: var(--sc-font-text); }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 4px; border-radius: 4px; }
+
+  /* ---------- index nav (gallery grammar: the nav is an index that jumps) ---------- */
+  .index {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; gap: clamp(.75rem, 2.4vw, 2.2rem);
+    padding: .9rem clamp(1rem, 3vw, 2.5rem);
+    font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600;
+    background: linear-gradient(to bottom, rgba(239,233,226,.9), rgba(239,233,226,0));
+  }
+  .index img { width: 34px; height: 34px; border-radius: 50%; }
+  .index a { text-decoration: none; opacity: .82; padding: .35rem 0; }
+  .index a:hover { opacity: 1; }
+  .index .call { margin-left: auto; opacity: 1; border: 1px solid rgba(50,46,43,.5); border-radius: 999px; padding: .5rem 1rem; letter-spacing: .04em; }
+  .index .lang { margin-left: auto; font: inherit; font-size: .78rem; font-weight: 600; letter-spacing: .08em; background: none; border: 0; color: inherit; cursor: pointer; padding: .5rem .6rem; opacity: .82; }
+  .index .lang:hover { opacity: 1; }
+  .index .lang + .call { margin-left: .4rem; }
+  .index .call:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+  @media (max-width: 640px) { .index .ix { display: none; } }
+
+  /* ---------- 1 · hero: layered planes on a short pin ---------- */
+  .hero .sc-stage { background: #E4DBD1; }
+  .plane { position: absolute; pointer-events: none; will-change: transform; }
+  .plane--back {
+    inset: -8% -4%; background: url(assets/backdrop-viini.webp) center/cover;
+    transform: translateY(calc(var(--sc-p, 0) * -6vh)) scale(calc(1.06 + var(--sc-p, 0) * .04));
+    opacity: .85;
+  }
+  .plane--glow {
+    inset: 0;
+    background: radial-gradient(60% 45% at 50% 34%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%);
+    transform: translateY(calc(var(--sc-p, 0) * -14vh));
+  }
+  .wordmark {
+    position: absolute; left: 0; right: 0; top: 47%;
+    margin: 0; text-align: center; line-height: .86; white-space: nowrap;
+    font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase;
+    font-size: clamp(3.6rem, 11vw, 12rem); letter-spacing: -.005em; color: var(--sc-accent);
+    transform: translateY(calc(var(--sc-p, 0) * -10vh));
+  }
+  .wordmark span { display: inline; }
+  .wordmark span + span::before { content: ' '; }
+  .plane--hands {
+    left: 50%; top: -9vh; width: min(1000px, 68vw); max-width: none; height: auto;
+    transform: translate(-50%, calc(var(--sc-p, 0) * -38vh)) scale(calc(1 + var(--sc-p, 0) * .06));
+    transform-origin: 50% 0;
+    filter: drop-shadow(0 28px 34px rgba(50,46,43,.28));
+  }
+  .plane--front {
+    inset: auto 0 0 0; height: 34%;
+    background: linear-gradient(to top, #E4DBD1 8%, rgba(239,233,226,0));
+  }
+  .hero-label {
+    position: absolute; padding: 1rem 1.2rem; margin: -1rem -1.2rem; border-radius: 14px;
+    background: radial-gradient(120% 140% at 0% 100%, rgba(239,233,226,.85), rgba(239,233,226,0) 75%); left: clamp(1rem, 4vw, 3.5rem); bottom: clamp(1.4rem, 5vh, 3rem);
+    z-index: 3; max-width: 34rem;
+  }
+  .label { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--sc-ink-soft); }
+  .label b { color: var(--sc-ink); font-weight: 700; }
+  .hero-label p { margin: .5rem 0 0; font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.55; color: var(--sc-ink); }
+  .hero-label .row { display: flex; flex-wrap: wrap; gap: .6rem 1rem; margin-top: 1.1rem; align-items: center; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 700; letter-spacing: .02em;
+    background: var(--sc-accent); color: var(--sc-accent-ink); padding: .85rem 1.4rem; border-radius: 999px;
+    transition: background-color .15s ease-out;
+  }
+  .btn:hover { background: #4F2429; }
+  @media (max-width: 700px) {
+    .plane--hands { width: 150vw; top: -4vh; }
+    .wordmark { top: 47%; font-size: 21vw; white-space: normal; }
+    .wordmark span { display: block; }
+    .wordmark span + span::before { content: none; }
+    .hero-label { right: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .plane, .wordmark { transform: none !important; }
+    .plane--hands { transform: translateX(-50%) !important; }
+  }
+
+  /* ---------- 2 · lookbook: pan rail + the page wears the polish ---------- */
+  .look .sc-stage {
+    background:
+      radial-gradient(70% 60% at 50% 55%, color-mix(in srgb, var(--polish) 32%, transparent), transparent 72%),
+      color-mix(in srgb, var(--polish) 8%, #F4EFEA);
+    transition: background-color .6s ease-out;
+    display: flex; align-items: center;
+  }
+  .rail { display: flex; gap: clamp(1.2rem, 2.6vw, 2.6rem); padding: 0 0 0 clamp(1.25rem, 6vw, 6rem); align-items: center; }
+  .rail__lead { flex: 0 0 clamp(16rem, 30vw, 26rem); }
+  .rail__lead h2 { font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.8rem, 6vw, 5.6rem); line-height: .9; margin: .6rem 0 1rem; color: var(--sc-ink); }
+  .rail__lead p { color: var(--sc-ink-soft); line-height: 1.6; margin: 0; max-width: 24rem; }
+  .set { flex: 0 0 clamp(14rem, 22vw, 21rem); margin: 0; }
+  .set__img { aspect-ratio: 4/5; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 50px -20px rgba(50,46,43,.3); }
+  .set__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .set figcaption { margin-top: .9rem; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); line-height: 1.5; }
+  .set figcaption b { display: block; color: var(--sc-ink); font-size: .9rem; letter-spacing: .06em; }
+  .set .sw { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .45rem; vertical-align: -1px; box-shadow: 0 0 0 1px rgba(50,46,43,.35); }
+  .rail__end { flex: 0 0 clamp(12rem, 22vw, 18rem); margin-right: clamp(1.25rem, 6vw, 6rem); color: var(--sc-ink-soft); line-height: 1.6; }
+  .rail__end a { color: var(--sc-ink); }
+
+  .chip {
+    position: fixed; left: clamp(1rem, 3vw, 2.5rem); bottom: clamp(1rem, 3vh, 2rem); z-index: 40;
+    display: flex; align-items: center; gap: .75rem;
+    background: rgba(255,255,255,.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(50,46,43,.18); border-radius: 999px; padding: .45rem .9rem .45rem .45rem;
+    opacity: 0; transform: translateY(10px); transition: opacity .3s ease-out, transform .3s ease-out;
+    font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600;
+  }
+  .chip.on { opacity: 1; transform: none; }
+  .chip i { width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--polish); box-shadow: inset 0 -6px 10px rgba(0,0,0,.25), inset 0 4px 6px rgba(255,255,255,.25); transition: background-color .45s ease-out; }
+  .chip span { color: var(--sc-ink-soft); }
+  .chip b { color: var(--sc-ink); font-weight: 700; display: block; letter-spacing: .06em; }
+  .swatches { display: flex; gap: .35rem; margin-left: .4rem; }
+  .swatches button { width: .8rem; height: .8rem; border-radius: 50%; border: 0; padding: 0; cursor: pointer; box-shadow: 0 0 0 1px rgba(50,46,43,.35); }
+  .swatches button[aria-current="true"] { box-shadow: 0 0 0 2px var(--sc-ink); }
+  @media (max-width: 640px) { .swatches { display: none; } }
+
+  /* ---------- 3 · services ---------- */
+  .ground-choc { background: #E5DCD2; }
+  .ground-nude { background: #FAF7F3; color: #322E2B; }
+  .ground-nude .label { color: #6A615B; }
+  .ground-nude .label b { color: #322E2B; }
+  .sec { padding: clamp(5rem, 12vh, 9rem) clamp(1rem, 6vw, 6rem); }
+  .sec h2 { font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.6rem, 6vw, 5.4rem); line-height: .9; margin: 0 0 2.4rem; }
+  /* room for Ä/Ö dots so they don't touch the label above */
+  .sec h2 { padding-top: .16em; }
+  .who { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; margin: 0 0 1rem; }
+  a[href^="mailto"] { overflow-wrap: anywhere; }
+  /* bigger tap areas on phones */
+  @media (max-width: 760px) { #varaa p a, #tekijat p a, .rail__end a { display: inline-block; padding: .55rem 0; } .index .lang { padding: .7rem .9rem; } }
+  .who--initial { display: grid; place-items: center; background: #72393E; color: #EFE9E2; font-family: var(--sc-font-display); font-size: 2.6rem; }
+  .services { display: grid; grid-template-columns: 1.3fr 1fr; gap: 0 clamp(2rem, 6vw, 6rem); max-width: 78rem; }
+  .svc { border-top: 1px solid rgba(50,46,43,.18); padding: 1.4rem 0 1.6rem; }
+  .svc:nth-child(odd) { padding-right: 2rem; }
+  .svc h3 { margin: 0 0 .4rem; font-size: 1.35rem; font-weight: 700; letter-spacing: .01em; }
+  .svc p { margin: 0; color: var(--sc-ink-soft); line-height: 1.6; max-width: 36ch; }
+  .services .big { grid-row: span 2; }
+  .services .big h3 { font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: .95; }
+  @media (max-width: 760px) { .services { grid-template-columns: 1fr; } .services .big { grid-row: auto; } }
+
+  /* ---------- 4 · prices ---------- */
+  .prices { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1.4rem, 3vw, 3rem); max-width: 82rem; }
+  .pb { grid-column: span 4; background: #EFE9E2; border-radius: 14px; padding: 1.4rem 1.5rem 1.2rem; box-shadow: 0 18px 30px -22px rgba(50,46,43,.22); }
+  .pb.wide { grid-column: span 8; }
+  .pb h3 { margin: 0 0 .8rem; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: #6A615B; font-weight: 700; }
+  .pb ul { list-style: none; margin: 0; padding: 0; }
+  .pb li { display: flex; justify-content: space-between; gap: 1rem; padding: .48rem 0; border-bottom: 1px solid rgba(50,46,43,.14); font-size: .98rem; line-height: 1.4; }
+  .pb li:last-child { border-bottom: 0; }
+  .pb li span:last-child { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pb .sub { color: #6A615B; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; padding-top: .9rem; border-bottom: 0; }
+  .wide ul { columns: 2; column-gap: 2.4rem; }
+  .wide li { break-inside: avoid; }
+  @media (max-width: 900px) { .pb, .pb.wide { grid-column: span 12; } .wide ul { columns: 1; } }
+
+
+  /* ---------- online booking (Timma) ---------- */
+  .book { background: #e5dcd2; padding: clamp(4rem, 11vh, 7.5rem) clamp(1rem, 6vw, 6rem); }
+  .book__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; max-width: 82rem; }
+  .book h2 { font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.6rem, 6vw, 5.4rem); line-height: .9; margin: .6rem 0 1.4rem; }
+  .book p { color: var(--sc-ink-soft); line-height: 1.7; max-width: 32rem; }
+  .book .steps { list-style: none; padding: 0; margin: 1.6rem 0 2rem; display: grid; gap: .7rem; }
+  .book .steps li { display: flex; gap: .9rem; align-items: baseline; font-weight: 600; }
+  .book .steps b { font-family: var(--sc-font-display); font-weight: 400; font-size: 1.6rem; color: var(--sc-accent); min-width: 1.4rem; }
+  .book .alt { font-size: .92rem; }
+  .book .alt a { font-weight: 700; }
+  .book__frame { background: #fff; border-radius: 16px; box-shadow: 0 24px 40px -26px rgba(50,46,43,.45); overflow: hidden; min-height: 620px; display: flex; flex-direction: column; }
+  .book__bar { display: flex; align-items: center; gap: .5rem; padding: .7rem 1rem; border-bottom: 1px solid rgba(50,46,43,.1); font-size: .78rem; color: var(--sc-ink-soft); letter-spacing: .06em; }
+  .book__bar i { width: .55rem; height: .55rem; border-radius: 50%; background: rgba(50,46,43,.18); }
+  .book__frame iframe { border: 0; width: 100%; flex: 1; min-height: 600px; }
+  .book__ph { flex: 1; display: grid; place-items: center; text-align: center; padding: 2rem; color: var(--sc-ink-soft); background: repeating-linear-gradient(135deg, #faf7f3 0 14px, #f4efe9 14px 28px); }
+  .book__ph strong { display: block; color: var(--sc-ink); font-size: 1.1rem; margin-bottom: .4rem; }
+  @media (max-width: 860px) { .book__grid { grid-template-columns: 1fr; } .book__frame { min-height: 520px; } }
+
+  /* ---------- 5 · close: the inquiry plate, typeset like a label ---------- */
+  .plate { max-width: 60rem; }
+  .plate .label { font-size: .85rem; }
+  .plate h2 { margin: 1rem 0 .4rem; }
+  .plate .phone { font-family: var(--sc-font-display); font-size: clamp(3rem, 9vw, 8rem); line-height: 1; letter-spacing: .01em; text-decoration: none; color: var(--sc-accent); display: inline-block; margin: .4rem 0 2rem; }
+  .plate .phone:hover { color: #4F2429; }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem 2.4rem; border-top: 1px solid rgba(50,46,43,.18); padding-top: 1.6rem; }
+  .facts p { margin: .35rem 0 0; line-height: 1.6; }
+  @media (max-width: 760px) { .facts { grid-template-columns: 1fr; } }
+  .foot { margin-top: 4.5rem; font-size: .78rem; color: var(--sc-ink-soft); line-height: 1.7; border-top: 1px solid rgba(50,46,43,.12); padding-top: 1.4rem; }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <a href="#top" class="brand">Hollywood Nails <span>Sörnäinen</span></a>
-  <nav class="nav" aria-label="Sivun osiot">
-    <a href="#palvelut">Palvelut</a>
-    <a href="#tyot">Työt</a>
-    <a href="#hinnasto">Hinnasto</a>
-    <a href="#yhteystiedot">Yhteystiedot</a>
-  </nav>
-  <a class="call" href="tel:+358404112391">040 411 2391</a>
-</header>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<nav class="index" aria-label="Sivun sisältö">
+  <a href="#top" aria-label="Hollywood Nails, alkuun"><img src="assets/logo-a-round.png" alt="" width="34" height="34"></a>
+  <a class="ix" href="#tyot">Töitä</a>
+  <a class="ix" href="#palvelut">Palvelut</a>
+  <a class="ix" href="#tekijat">Tekijät</a>
+  <a class="ix" href="#hinnasto">Hinnasto</a>
+  <a class="ix" href="#tekijat">Varaa aika</a>
+  <button class="lang" id="langBtn" type="button" aria-label="Switch to English">EN</button>
+  <a class="call" href="#tekijat">Varaa aika</a>
+</nav>
+
+<div class="chip" aria-live="polite">
+  <i></i>
+  <div><span>Sävy</span><b id="chipName">Suklaa</b></div>
+  <div class="swatches" id="swatches" role="group" aria-label="Hyppää sävyyn"></div>
+</div>
 
 <main id="top">
 
-  <section class="hero">
-    <img class="hero-img" src="img/hero-chocolate-marble.jpg" alt="Suklaanruskeat marmorikuvioidut mantelikynnet" fetchpriority="high">
-    <div class="hero-content">
-      <h1 class="wordmark">Hollywood<br>Nails</h1>
-      <div class="hero-row">
-        <p>Rakenne- ja geelikynnet, cat eye, nail art, jalkahoidot, ripset ja sokerointi Hämeentiellä. <span class="en">Nails, lashes, brows &amp; sugaring in Sörnäinen, Helsinki.</span></p>
-        <a class="btn btn-light" href="tel:+358404112391">Soita ja varaa <span class="en">/ Call to book</span></a>
+  <!-- 1 · RECOGNITION: object one, already labelled. Layered planes on a short pin. -->
+  <section class="hero" data-sc-act="pin" data-sc-span="1.5" aria-label="Hollywood Nails">
+    <div data-sc-stage>
+      <div class="plane plane--back" aria-hidden="true"></div>
+      <div class="plane plane--glow" aria-hidden="true"></div>
+      <h1 class="wordmark"><span>Hollywood</span><span>Nails</span></h1>
+      <img class="plane plane--hands" src="assets/hero-hands.webp" width="1448" height="849"
+           alt="Suklaanruskeat ja marmorikuvioidut mantelikynnet, Hollywood Nailsin työtä">
+      <div class="plane plane--front" aria-hidden="true"></div>
+      <div class="hero-label" data-sc-cue="0 0.9 0">
+        <div class="label"><b>#00 Suklaa &amp; marmori</b> · manteli</div>
+        <p>Kynsistudio Hämeentiellä, Sörnäisissä. Rakenne- ja geelikynnet, cat eye, nail art, jalkahoidot, ripset ja sokerointi.</p>
+        <div class="row"><a class="btn" href="#tekijat">Varaa aika</a><span class="label">040 411 2391</span></div>
       </div>
     </div>
   </section>
 
-  <section id="palvelut" class="section services">
-    <div class="wrap">
-      <h2>Palvelut</h2>
-      <ul class="service-list">
-        <li><h3>Kynnet</h3><p>Manikyyri, geelilakkaus ja akryyliset rakennekynnet. Ranskalaiset, ombret, cat eye ja kuviot.</p></li>
-        <li><h3>Jalat</h3><p>Jalkahoito ja varpaiden geelilakkaus.</p></li>
-        <li><h3>Ripset &amp; kulmat</h3><p>Ripsienpidennykset, kestotaivutus sekä ripsien ja kulmien kestovärjäys.</p></li>
-        <li><h3>Sokerointi</h3><p>Hellävarainen karvanpoisto sokeritahnalla, ylähuulesta sääriin ja reisiin.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="tyot" class="section work">
-    <div class="wrap">
-      <div class="work-head">
-        <h2>Töitämme</h2>
-        <a class="link" href="https://www.instagram.com/hollywoodnails.helsinki/" target="_blank" rel="noopener">Lisää töitä Instagramissa @hollywoodnails.helsinki</a>
-      </div>
-      <div class="gallery">
-        <figure class="g1"><img src="img/02-lilac-cats-eye-white-lines-v2.jpg" alt="Liila cat eye -lakkaus valkoisilla viivoilla" loading="lazy"></figure>
-        <figure class="g2"><img src="img/11-burgundy-diagonal-french.jpg" alt="Viininpunainen vino ranskalainen manikyyri" loading="lazy"></figure>
-        <figure class="g3"><img src="img/07-classic-french-v2.jpg" alt="Klassinen ranskalainen manikyyri" loading="lazy"></figure>
-        <figure class="g4"><img src="img/04-nude-almond-rhinestones-v2.jpg" alt="Nude-mantelikynnet strasseilla" loading="lazy"></figure>
-        <figure class="g5"><img src="img/09-raspberry-red-round-v2.jpg" alt="Vadelmanpunaiset pyöreät kynnet" loading="lazy"></figure>
-        <figure><img src="img/14-bronze-cat-eye-black-glitter.jpg" alt="Pronssinen cat eye ja musta kimallus" loading="lazy"></figure>
-        <figure><img src="img/13-pink-white-ombre.jpg" alt="Vaaleanpunainen ombre" loading="lazy"></figure>
-        <figure class="g6"><img src="img/01-berry-ombre-cats-eye-v2.jpg" alt="Marjanpunaiset ombre cat eye -kynnet" loading="lazy"></figure>
-        <figure><img src="img/16-black-red-smoke-glitter.jpg" alt="Musta ja punainen savukuvio kimalluksella" loading="lazy"></figure>
-        <figure><img src="img/17-black-matte-magenta-cat-eye.jpg" alt="Mattamusta ja magenta cat eye" loading="lazy"></figure>
-        <figure class="g7"><img src="img/03-classic-red-v2.jpg" alt="Klassinen punainen lakkaus" loading="lazy"></figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="hinnasto" class="section prices-section">
-    <div class="wrap">
-      <h2>Hinnasto</h2>
-      <div class="prices">
-        <div class="price-col">
-          <h3>Rakennekynnet</h3>
-          <ul>
-            <li><span>Uudet akryylikynnet</span><span>60 €</span></li>
-            <li><span>Ranskalainen</span><span>65 €</span></li>
-            <li><span>Huolto</span><span></span></li>
-            <li class="sub"><span>Ranskalainen</span><span>55 €</span></li>
-            <li class="sub"><span>1 jatke huollossa</span><span>2 €</span></li>
-            <li class="sub"><span>1 kynnen korjaus</span><span>5 €</span></li>
-            <li class="sub"><span>Rakennekynsien poisto</span><span>30 €</span></li>
-            <li><span>1 väri</span><span>+ 5 €</span></li>
-            <li><span>2 väriä</span><span>+ 10 €</span></li>
-            <li><span>Muut koristeet</span><span>alk. 2,50 €</span></li>
-          </ul>
-          <h3>Manikyyri &amp; geelilakkaus</h3>
-          <ul>
-            <li><span>Manikyyri (muotoilu, kynsinauhojen käsittely)</span><span>25 €</span></li>
-            <li><span>Geelilakkaus</span><span>37 €</span></li>
-            <li class="sub"><span>Geelilakkauksen huolto</span><span>42 €</span></li>
-          </ul>
+  <!-- 2 · RANGE (peak): the lookbook. The page wears the polish. -->
+  <section class="look" id="tyot" data-sc-act="pan" data-sc-span="5.2" aria-label="Töitämme">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0">
+        <div class="rail__lead">
+          <div class="label">Töitämme · 11 settiä</div>
+          <h2>Kaikki tässä on meidän käsialaamme.</h2>
+          <p>Jokainen kuva on studiomme omaa työtä. Selaa, ja sivu vaihtaa sävyä kynsien mukaan.</p>
         </div>
-        <div class="price-col">
-          <h3>Jalkahoito</h3>
-          <ul>
-            <li><span>Jalkahoito (liuotus, kovettumat, kynsinauhat, hieronta)</span><span>45 €</span></li>
-            <li><span>Jalkahoito ja geelilakkaus</span><span>60 €</span></li>
-            <li><span>Varpaiden geelilakkaus</span><span>40 €</span></li>
-            <li class="sub"><span>Varpaiden geelilakkauksen huolto</span><span>45 €</span></li>
-          </ul>
-          <h3>Sokerointi</h3>
-          <ul>
-            <li><span>Ylähuuli</span><span>10 €</span></li>
-            <li><span>Kainalot</span><span>15 €</span></li>
-            <li><span>Käsivarret</span><span>35 €</span></li>
-            <li><span>Koko kasvot</span><span>30 €</span></li>
-            <li><span>Bikini</span><span>35 €</span></li>
-            <li><span>Sääret</span><span>40 €</span></li>
-            <li><span>Reidet</span><span>45 €</span></li>
-            <li><span>Sääret ja reidet</span><span>65 €</span></li>
-          </ul>
-        </div>
-        <div class="price-col">
-          <h3>Ripsienpidennykset</h3>
-          <ul>
-            <li><span>Uudet klassiset</span><span>60 €</span></li>
-            <li class="sub"><span>Huolto</span><span>45 €</span></li>
-            <li><span>Uudet volyymit</span><span>65 €</span></li>
-            <li class="sub"><span>Huolto</span><span>55 €</span></li>
-            <li><span>Ripsienpidennysten poisto</span><span>30 €</span></li>
-          </ul>
-          <h3>Kestovärjäys</h3>
-          <ul>
-            <li><span>Ripset</span><span>15 €</span></li>
-            <li><span>Kulmat</span><span>15 €</span></li>
-            <li><span>Ripset ja kulmat</span><span>25 €</span></li>
-          </ul>
-          <h3>Ripset</h3>
-          <ul>
-            <li><span>Hybridiripset</span><span>55 €</span></li>
-            <li class="sub"><span>Huolto</span><span>45 €</span></li>
-            <li><span>Ripsitaivutus (sis. ripsien värjäys)</span><span>55 €</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="price-cta">
-        <p>Varaa aika soittamalla. <span class="en">Call to book.</span></p>
-        <a class="btn" href="tel:+358404112391">Soita 040 411 2391</a>
+        <figure class="set" data-polish="#d9ad98" data-name="Nude"><div class="set__img" data-sc-tilt="5"><img src="assets/04-nude-almond-rhinestones.webp" width="720" height="900" loading="lazy" alt="Nude-mantelikynnet strasseilla"></div><figcaption><b><span class="sw" style="background:#d9ad98"></span>#04 Nude</b>manteli · strassit</figcaption></figure>
+        <figure class="set" data-polish="#ead7cf" data-name="Ranskalainen"><div class="set__img" data-sc-tilt="5"><img src="assets/07-classic-french.webp" width="720" height="900" loading="lazy" alt="Klassinen ranskalainen manikyyri"></div><figcaption><b><span class="sw" style="background:#ead7cf"></span>#07 Ranskalainen</b>klassinen · valkoiset kärjet</figcaption></figure>
+        <figure class="set" data-polish="#efc3cb" data-name="Pinkki ombre"><div class="set__img" data-sc-tilt="5"><img src="assets/13-pink-white-ombre.webp" width="720" height="900" loading="lazy" alt="Pinkki–valkoinen ombre"></div><figcaption><b><span class="sw" style="background:#efc3cb"></span>#13 Pinkki ombre</b>pinkistä valkoiseen</figcaption></figure>
+        <figure class="set" data-polish="#b03a5b" data-name="Marja"><div class="set__img" data-sc-tilt="5"><img src="assets/01-berry-ombre-cats-eye.webp" width="720" height="900" loading="lazy" alt="Marjanpunainen ombre cat eye -kynnet"></div><figcaption><b><span class="sw" style="background:#b03a5b"></span>#01 Marja</b>ombre · cat eye · manteli</figcaption></figure>
+        <figure class="set" data-polish="#a98a9e" data-name="Liila"><div class="set__img" data-sc-tilt="5"><img src="assets/02-lilac-cats-eye-white-lines.webp" width="720" height="900" loading="lazy" alt="Liila cat eye valkoisilla viivoilla"></div><figcaption><b><span class="sw" style="background:#a98a9e"></span>#02 Liila</b>cat eye · valkoiset viivat</figcaption></figure>
+        <figure class="set" data-polish="#b0115e" data-name="Magenta"><div class="set__img" data-sc-tilt="5"><img src="assets/17-black-matte-magenta-cat-eye.webp" width="720" height="900" loading="lazy" alt="Musta matta ja magenta cat eye"></div><figcaption><b><span class="sw" style="background:#b0115e"></span>#17 Magenta</b>musta matta · cat eye</figcaption></figure>
+        <figure class="set" data-polish="#6e0f22" data-name="Burgundi"><div class="set__img" data-sc-tilt="5"><img src="assets/11-burgundy-diagonal-french.webp" width="720" height="900" loading="lazy" alt="Burgundi viisto ranskalainen"></div><figcaption><b><span class="sw" style="background:#6e0f22"></span>#11 Burgundi</b>viisto ranskalainen</figcaption></figure>
+        <figure class="set" data-polish="#d0101e" data-name="Punainen"><div class="set__img" data-sc-tilt="5"><img src="assets/03-classic-red.webp" width="720" height="900" loading="lazy" alt="Klassinen punainen"></div><figcaption><b><span class="sw" style="background:#d0101e"></span>#03 Punainen</b>klassinen · kiiltävä</figcaption></figure>
+        <figure class="set" data-polish="#d81b3e" data-name="Vadelma"><div class="set__img" data-sc-tilt="5"><img src="assets/09-raspberry-red-round.webp" width="720" height="900" loading="lazy" alt="Vadelmanpunaiset pyöreät kynnet"></div><figcaption><b><span class="sw" style="background:#d81b3e"></span>#09 Vadelma</b>pyöreä</figcaption></figure>
+        <figure class="set" data-polish="#9c1a12" data-name="Savu"><div class="set__img" data-sc-tilt="5"><img src="assets/16-black-red-smoke-glitter.webp" width="720" height="900" loading="lazy" alt="Musta–punainen savu ja glitter"></div><figcaption><b><span class="sw" style="background:#9c1a12"></span>#16 Savu</b>musta–punainen · glitter</figcaption></figure>
+        <figure class="set" data-polish="#8a5a2b" data-name="Pronssi"><div class="set__img" data-sc-tilt="5"><img src="assets/14-bronze-cat-eye-black-glitter.webp" width="720" height="900" loading="lazy" alt="Pronssi cat eye ja musta glitter"></div><figcaption><b><span class="sw" style="background:#8a5a2b"></span>#14 Pronssi</b>cat eye · musta glitter</figcaption></figure>
+        <div class="rail__end">Lisää töitä Instagramissa: <a href="https://www.instagram.com/hollywoodnails.helsinki/">@hollywoodnails.helsinki</a></div>
       </div>
     </div>
   </section>
 
-  <section class="praise-section" aria-label="Asiakkaat kehuvat">
-    <div class="wrap">
-      <p class="praise-title">Asiakkaat kehuvat</p>
-      <ul class="praise">
-        <li>Tarkka ja huolellinen työ</li>
-        <li>Laaja värivalikoima</li>
-        <li>Ystävällinen palvelu</li>
-        <li>Siisti studio</li>
-      </ul>
+  <!-- 3 · SUBSTANCE: flow + in -->
+  <section class="sc-section sec ground-choc" id="palvelut" data-sc-act="flow">
+    <div class="label">Palvelut</div>
+    <h2>Mitä teemme.</h2>
+    <div class="services" data-sc-in data-sc-stagger="60">
+      <div class="svc big"><h3>Kynnet</h3><p>Manikyyri, geelilakkaus ja akryyliset rakennekynnet. Ranskalaiset, ombret, cat eye ja kuviot.</p></div>
+      <div class="svc"><h3>Jalat</h3><p>Jalkahoito ja varpaiden geelilakkaus.</p></div>
+      <div class="svc"><h3>Ripset &amp; kulmat</h3><p>Ripsienpidennykset, ripsitaivutus sekä ripsien ja kulmien kestovärjäys.</p></div>
+      <div class="svc"><h3>Sokerointi</h3><p>Hellävarainen karvanpoisto sokeritahnalla, ylähuulesta sääriin ja reisiin.</p></div>
     </div>
   </section>
 
-  <section id="yhteystiedot" class="section contact">
-    <div class="wrap contact-grid">
-      <div>
-        <h2>Yhteystiedot</h2>
-        <dl class="info">
-          <dt>Osoite</dt><dd>Hämeentie 17 A, Helsinki</dd>
-          <dt>Puhelin</dt><dd><a href="tel:+358404112391">040 411 2391</a></dd>
-          <dt>Sähköposti</dt><dd><a href="mailto:hollywoodnails.helsinki@gmail.com">hollywoodnails.helsinki@<wbr>gmail.com</a></dd>
-          <dt>Aukioloajat</dt><dd>Ma–pe 10–18<br>La 10–14<br>Su suljettu<br><span class="en">Mon–Fri 10–18, Sat 10–14, Sun closed</span></dd>
-          <dt>Instagram</dt><dd><a href="https://www.instagram.com/hollywoodnails.helsinki/" target="_blank" rel="noopener">@hollywoodnails.helsinki</a></dd>
-        </dl>
-        <a class="btn btn-light" href="tel:+358404112391">Soita ja varaa <span class="en">/ Call to book</span></a>
-      </div>
-      <div class="map-card">
-        <p class="map-addr">Hämeentie 17 A<br>00500 Helsinki</p>
-        <p class="map-sub">Sörnäinen, lyhyt kävely metroasemalta. <span class="en">Near Sörnäinen metro.</span></p>
-        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Hollywood+Nails+H%C3%A4meentie+17+A+Helsinki" target="_blank" rel="noopener">Näytä kartalla <span class="en">/ Open map</span></a>
+  <!-- 3b · WHO: the two people you can book -->
+  <section class="sc-section sec" id="tekijat" data-sc-act="flow" style="background:#EFE9E2">
+    <div class="label">Tekijät</div>
+    <h2>Keneltä varaat.</h2>
+    <div class="services" data-sc-in data-sc-stagger="60">
+      <div class="svc"><img class="who" src="assets/sandy.webp" width="96" height="96" alt="Sandy, Hollywood Nailsin omistaja"><h3>Sandy</h3><p><b>Omistaja.</b> Kaikki palvelut: kynnet, jalkahoidot, ripset ja sokerointi.<br>Varaa soittamalla <a href="tel:+358404112391">040 411 2391</a>.</p></div>
+      <div class="svc"><img class="who" src="assets/teresa.webp" width="96" height="96" alt="Teresa, kynsi- ja ripsiteknikko"><h3>Teresa</h3><p>Kynnet, jalkahoidot ja ripset. Teresa palvelee englanniksi <i>(English only)</i>.<br>Teresan hinnat ja vapaat ajat näet netissä, tai soita / WhatsApp <a href="tel:+358415770319">041 577 0319</a>.</p><a class="btn" href="https://varaa.timma.fi/hollywoodnails" target="_blank" rel="noopener" style="margin-top:1rem">Varaa Teresalle</a> <a class="btn" href="https://wa.me/358415770319" target="_blank" rel="noopener" style="margin-top:1rem">WhatsApp</a></div>
+    </div>
+  </section>
+
+  <!-- 4 · CLARITY: reveal per price block -->
+  <section class="sc-section sec ground-nude" id="hinnasto" data-sc-act="flow">
+    <div class="label"><b>Hinnasto</b> · Sandy · puhelinvaraus</div>
+    <h2>Mitä se maksaa.</h2>
+    <p style="margin:-1.2rem 0 2.4rem;color:var(--sc-ink-soft);max-width:44ch">Sandyn hinnat, kun varaat soittamalla. Teresan hinnat näet hänen nettiajanvarauksestaan.</p>
+    <div class="prices">
+      <div class="pb wide" data-sc-reveal="up" data-sc-reveal-at="0.02 0.22"><h3>Rakennekynnet</h3><ul>
+        <li><span>Uudet akryylikynnet</span><span>60 €</span></li>
+        <li><span>Ranskalainen</span><span>65 €</span></li>
+        <li class="sub"><span>Huolto</span><span></span></li>
+        <li><span>Ranskalainen</span><span>55 €</span></li>
+        <li><span>1 jatke huollossa</span><span>2 €</span></li>
+        <li><span>1 kynnen korjaus</span><span>5 €</span></li>
+        <li><span>Rakennekynsien poisto</span><span>30 €</span></li>
+        <li><span>1 väri</span><span>+ 5 €</span></li>
+        <li><span>2 väriä</span><span>+ 10 €</span></li>
+        <li><span>Muut koristeet</span><span>alk. 2,50 €</span></li>
+      </ul></div>
+      <div class="pb" data-sc-reveal="up" data-sc-reveal-at="0.06 0.26"><h3>Manikyyri &amp; geelilakkaus</h3><ul>
+        <li><span>Manikyyri (muotoilu, kynsinauhojen käsittely)</span><span>25 €</span></li>
+        <li><span>Geelilakkaus</span><span>37 €</span></li>
+        <li><span>Geelilakkauksen huolto</span><span>42 €</span></li>
+      </ul></div>
+      <div class="pb" data-sc-reveal="up" data-sc-reveal-at="0.12 0.34"><h3>Jalkahoito</h3><ul>
+        <li><span>Jalkahoito (liuotus, kovettumat, kynsinauhat, hieronta)</span><span>45 €</span></li>
+        <li><span>Jalkahoito ja geelilakkaus</span><span>60 €</span></li>
+        <li><span>Varpaiden geelilakkaus</span><span>40 €</span></li>
+        <li><span>Varpaiden geelilakkauksen huolto</span><span>45 €</span></li>
+      </ul></div>
+      <div class="pb" data-sc-reveal="up" data-sc-reveal-at="0.16 0.38"><h3>Ripsienpidennykset</h3><ul>
+        <li><span>Uudet klassiset</span><span>60 €</span></li>
+        <li><span>Huolto</span><span>45 €</span></li>
+        <li><span>Uudet volyymit</span><span>65 €</span></li>
+        <li><span>Huolto</span><span>55 €</span></li>
+        <li><span>Hybridiripset</span><span>55 €</span></li>
+        <li><span>Huolto</span><span>45 €</span></li>
+        <li><span>Ripsitaivutus (sis. värjäys)</span><span>55 €</span></li>
+        <li><span>Ripsienpidennysten poisto</span><span>30 €</span></li>
+      </ul></div>
+      <div class="pb" data-sc-reveal="up" data-sc-reveal-at="0.2 0.42"><h3>Kestovärjäys</h3><ul>
+        <li><span>Ripset</span><span>15 €</span></li>
+        <li><span>Kulmat</span><span>15 €</span></li>
+        <li><span>Ripset ja kulmat</span><span>25 €</span></li>
+      </ul></div>
+      <div class="pb wide" data-sc-reveal="up" data-sc-reveal-at="0.24 0.46"><h3>Sokerointi</h3><ul>
+        <li><span>Ylähuuli</span><span>10 €</span></li>
+        <li><span>Kainalot</span><span>15 €</span></li>
+        <li><span>Koko kasvot</span><span>30 €</span></li>
+        <li><span>Käsivarret</span><span>35 €</span></li>
+        <li><span>Bikini</span><span>35 €</span></li>
+        <li><span>Sääret</span><span>40 €</span></li>
+        <li><span>Reidet</span><span>45 €</span></li>
+        <li><span>Sääret ja reidet</span><span>65 €</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- 5 · COMMITMENT: the inquiry plate, typeset like a label -->
+  <section class="sc-section sec" id="varaa" data-sc-act="flow" style="background:#EFE9E2">
+    <div class="plate" data-sc-in data-sc-stagger="70">
+      <div class="label"><b>Varaus</b> · puhelimella · call to book</div>
+      <h2>Soita, niin sovitaan aika.</h2>
+      <a class="phone" href="tel:+358404112391">040 411 2391</a>
+      <div class="facts">
+        <div><div class="label">Osoite</div><p>Hämeentie 17 A, 00500 Helsinki<br>Sörnäinen, lyhyt kävely metroasemalta.<br><a href="https://maps.google.com/?q=H%C3%A4meentie+17+A,+Helsinki">Näytä kartalla</a></p></div>
+        <div><div class="label">Aukioloajat</div><p>Ma–pe 10–18<br>La 10–14<br>Su suljettu</p></div>
+        <div><div class="label">Muut</div><p><a href="mailto:hollywoodnails.helsinki@gmail.com">hollywoodnails.helsinki@gmail.com</a><br><a href="https://www.instagram.com/hollywoodnails.helsinki/">@hollywoodnails.helsinki</a></p></div>
       </div>
     </div>
+    <footer class="foot">Hollywood Nails (toiminimi) · Hämeentie 17 A, 00500 Helsinki · Y-tunnus 2030900-5 · ALV-nro FI20309005<br>Sivusto ei käytä evästeitä eikä kerää henkilötietoja. No cookies, no tracking.</footer>
   </section>
 
 </main>
 
-<footer class="footer">
-  <div class="footer-row">
-    <div class="footer-brand">
-      <img src="img/logo-a-round.png" alt="" width="36" height="36">
-      <span>Hollywood Nails</span>
-    </div>
-    <p class="footer-info">Hollywood Nails (toiminimi) · Hämeentie 17 A, 00500 Helsinki · Y-tunnus 2030900-5 · ALV-nro FI20309005 · <a href="mailto:hollywoodnails.helsinki@gmail.com">hollywoodnails.helsinki@gmail.com</a></p>
-  </div>
-  <details class="privacy">
-    <summary>© 2026 Hollywood Nails · Tietosuoja <span class="en">/ Privacy</span></summary>
-    <p>Sivusto ei käytä evästeitä eikä kerää henkilötietoja. Palvelin (GitHub Pages) voi tallentaa IP-osoitteita tietoturvan vuoksi. Kartta avautuu Google Mapsiin vain painamalla "Näytä kartalla". <span class="en">No cookies, no tracking; the host may log IP addresses for security.</span></p>
-  </details>
-</footer>
-
-<a class="mobile-book" href="tel:+358404112391">Soita ja varaa · 040 411 2391</a>
-
-<script src="vendor/lenis.min.js"></script>
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="scroll.js?v=5"></script>
+<script src="scrollcraft.js?v=7"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* Signature move: the page wears the polish. The set nearest the centre of the
+   lookbook sets --polish for the whole page; a chip names the shade. */
+(function () {
+  var look = document.querySelector('.look');
+  var sets = Array.prototype.slice.call(document.querySelectorAll('.set'));
+  var chip = document.querySelector('.chip'), name = document.getElementById('chipName');
+  var sw = document.getElementById('swatches'), root = document.documentElement;
+  var current = -1;
+  sets.forEach(function (s, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.style.background = s.dataset.polish;
+    b.setAttribute('aria-label', s.dataset.name);
+    b.addEventListener('click', function () { jump(i); });
+    sw.appendChild(b);
+  });
+  function jump(i) {
+    // scroll the page so set i reaches the centre of the rail travel
+    var r = look.getBoundingClientRect();
+    var top = window.scrollY + r.top;
+    var travel = look.offsetHeight - window.innerHeight;
+    var frac = (i + 1.2) / (sets.length + 2);
+    window.scrollTo({ top: top + travel * frac, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+  function set(i) {
+    if (i === current) return; current = i;
+    root.style.setProperty('--polish', sets[i].dataset.polish);
+    name.textContent = sets[i].dataset.name;
+    Array.prototype.forEach.call(sw.children, function (b, k) { b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+  }
+  function tick() {
+    var r = look.getBoundingClientRect();
+    var inLook = r.top < innerHeight * 0.5 && r.bottom > innerHeight * 0.92;
+    chip.classList.toggle('on', inLook);
+    if (inLook) {
+      var cx = innerWidth / 2, best = 0, bd = 1e9;
+      sets.forEach(function (s, i) {
+        var b = s.getBoundingClientRect(); var d = Math.abs(b.left + b.width / 2 - cx);
+        if (d < bd) { bd = d; best = i; }
+      });
+      set(best);
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+<script src="i18n.js?v=7"></script>
 </body>
 </html>
